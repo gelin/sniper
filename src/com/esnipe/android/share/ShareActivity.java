@@ -53,7 +53,8 @@ public class ShareActivity extends Activity {
             exit();
             return;
         }
-        Toast.makeText(this, getString(R.string.opening_item) + itemId, Toast.LENGTH_LONG).show();
+        Toast.makeText(this,
+                String.format(getString(R.string.opening_item), itemId), Toast.LENGTH_LONG).show();
 
         openInBrowser(createUrl(itemId));
 
@@ -82,6 +83,7 @@ public class ShareActivity extends Activity {
 
     void openInBrowser(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        //startActivity(Intent.createChooser(intent, getString(R.string.open_esnipe)));
         startActivity(intent);
     }
 
