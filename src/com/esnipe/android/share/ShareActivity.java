@@ -42,7 +42,13 @@ public class ShareActivity extends Activity {
 
         logIntent(intent);
 
-        String itemId = extractItemId(intent.getCharSequenceExtra(Intent.EXTRA_TEXT));
+        CharSequence text = intent.getCharSequenceExtra(Intent.EXTRA_TEXT);
+        if (text == null) {
+            exit();
+            return;
+        }
+
+        String itemId = extractItemId(text);
         if (itemId == null) {
             exit();
             return;
