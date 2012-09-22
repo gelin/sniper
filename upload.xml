@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+#   Google Code upload script.
+#   Copyright (C) 2012  Denis Nelubin aka Gelin
+#   
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#   
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#   
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+#   
+#   http://gelin.ru
+#   mailto:den@gelin.ru
+-->
+
+<project name="esnipe-share-android-upload" default="all">
+
+    <property file="local.properties"/>
+    <property file="upload.credentials.properties"/>
+    <xmlproperty file="AndroidManifest.xml"/>
+
+    <taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" name="gcupload"
+	classpath="${sdk.dir}/ant-googlecode-0.0.2.jar"/>
+
+    <target name="all" depends="debug, release"/>
+
+    <target name="debug">
+
+	<gcupload 
+	    username="${gc.username}"
+	    password="${gc.password}"
+    	    projectname="esnipe-share-android" 
+    	    filename="bin/esnipe-share-android-debug.apk" 
+    	    targetfilename="esnipe-share-android-${manifest(android:versionName)}-${manifest(android:versionCode)}-debug.apk"
+    	    summary="eSnipe Share App (${manifest(android:versionName)}, signed by debug key)"
+    	    labels="Type-Package, OpSys-Android_1.5" />
+
+	<copy file="bin/esnipe-share-android-debug.apk"
+	    todir="/home/gelin/Dropbox/android@gelin"/>
+    
+    </target>
+    
+    <target name="release">
+
+	<copy file="bin/esnipe-share-android-release.apk"
+	    tofile="bin/esnipe-share-android.apk"/>
+
+	<gcupload 
+	    username="${gc.username}"
+	    password="${gc.password}"
+    	    projectname="esnipe-share-android" 
+    	    targetfilename="esnipe-share-android-${manifest(android:versionName)}-${manifest(android:versionCode)}.apk"
+    	    summary="eSnipe Share App (${manifest(android:versionName)})"
+    	    labels="Type-Package, OpSys-Android_1.5" />
+
+	<copy file="bin/esnipe-share-android.apk"
+	    todir="/home/gelin/Dropbox/android@gelin"/>
+    
+    </target>
+    
+</project>

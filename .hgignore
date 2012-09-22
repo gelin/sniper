@@ -2,3 +2,6 @@ syntax: glob
 .idea/*
 gen/*
 out/*
+bin/*
+upload.credentials.properties
+local.properties
