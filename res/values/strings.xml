@@ -3,4 +3,6 @@
     <string name="app_name">Share to eSnipe</string>
     <string name="app_description">TBD</string>
     <string name="esnipe">eSnipe</string>
+
+    <string name="cannot_open">Cannot open the item</string>
 </resources>
