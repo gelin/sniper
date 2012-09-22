@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Share to eSnipe</string>
+    <string name="app_description">TBD</string>
     <string name="esnipe">eSnipe</string>
 </resources>
