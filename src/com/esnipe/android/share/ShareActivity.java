@@ -6,7 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ShareActivity extends Activity {
+
+    static final Pattern ID_PATTERN = Pattern.compile("id=(\\d+)");
+    static final int ID_GROUP = 1;
+
     /**
      * Called when the activity is first created.
      */
@@ -21,6 +28,14 @@ public class ShareActivity extends Activity {
         }
 
         logIntent(intent);
+        String itemId = extractItemId(intent.getCharSequenceExtra(Intent.EXTRA_TEXT));
+        if (itemId == null) {
+            exit();
+            return;
+        }
+        Toast.makeText(this, getString(R.string.opening_item) + itemId, Toast.LENGTH_LONG).show();
+
+        finish();
     }
 
     void logIntent(Intent intent) {
@@ -29,6 +44,14 @@ public class ShareActivity extends Activity {
         Log.d(Tag.TAG, "data: " + intent.getDataString());
         Log.d(Tag.TAG, "subj: " + intent.getStringExtra(Intent.EXTRA_SUBJECT));
         Log.d(Tag.TAG, "text: " + intent.getCharSequenceExtra(Intent.EXTRA_TEXT));
+    }
+
+    String extractItemId(CharSequence text) {
+        Matcher m = ID_PATTERN.matcher(text);
+        if (m.find()) {
+            return m.group(ID_GROUP);
+        }
+        return null;
     }
 
     void exit() {

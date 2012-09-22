@@ -5,4 +5,5 @@
     <string name="esnipe">eSnipe</string>
 
     <string name="cannot_open">Cannot open the item</string>
+    <string name="opening_item">Opening item </string>
 </resources>
