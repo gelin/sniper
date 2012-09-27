@@ -8,13 +8,38 @@ import java.util.regex.Pattern;
  */
 public class EbayItemIdMatcher {
 
-    static final Pattern ID_PATTERN = Pattern.compile("id=(\\d+)");
-    static final int ID_GROUP = 1;
+    private static class IdTest {
+        Pattern pattern;
+        int group;
+        public IdTest(String pattern, int group) {
+            this.pattern = Pattern.compile(pattern);
+            this.group = group;
+        }
 
+        public String findId(CharSequence text) {
+            Matcher m = this.pattern.matcher(text);
+            if (m.find()) {
+                return m.group(this.group);
+            }
+            return null;
+        }
+    }
+
+    static final IdTest[] TESTS = {
+            new IdTest("[^a-z]itemId=(\\d+)", 1),
+            new IdTest("[^a-z]id=(\\d+)", 1),
+    };
+
+    /**
+     *  Extracts the eBay item ID from the text.
+     *  Returns null if ID is not found.
+     */
     public static String extractItemId(CharSequence text) {
-        Matcher m = ID_PATTERN.matcher(text);
-        if (m.find()) {
-            return m.group(ID_GROUP);
+        for (IdTest test : TESTS) {
+            String id = test.findId(text);
+            if (id != null) {
+                return id;
+            }
         }
         return null;
     }
