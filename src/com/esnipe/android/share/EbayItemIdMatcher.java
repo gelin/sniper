@@ -28,6 +28,7 @@ public class EbayItemIdMatcher {
     static final IdTest[] TESTS = {
             new IdTest("[^a-z]itemId=(\\d+)", 1),
             new IdTest("[^a-z]id=(\\d+)", 1),
+            new IdTest("/(\\d+)$", 1),
     };
 
     /**
