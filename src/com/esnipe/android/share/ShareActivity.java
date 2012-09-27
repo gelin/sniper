@@ -2,13 +2,10 @@ package com.esnipe.android.share;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,16 +13,6 @@ public class ShareActivity extends Activity {
 
     static final Pattern ID_PATTERN = Pattern.compile("id=(\\d+)");
     static final int ID_GROUP = 1;
-
-    static final String ESNIPE_URL;
-    static {
-        try {
-            ESNIPE_URL = "http://esnipe.com/snipe-it?url=" +
-                    URLEncoder.encode("http://www.ebay.com/itm/", "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);  //should never happen
-        }
-    }
 
     /**
      * Called when the activity is first created.
@@ -56,7 +43,7 @@ public class ShareActivity extends Activity {
         Toast.makeText(this,
                 String.format(getString(R.string.opening_item), itemId), Toast.LENGTH_LONG).show();
 
-        openInBrowser(createUrl(itemId));
+        new EsnipeOpener(this).openInBrowser(itemId);
 
         finish();
     }
@@ -75,16 +62,6 @@ public class ShareActivity extends Activity {
             return m.group(ID_GROUP);
         }
         return null;
-    }
-
-    String createUrl(String itemId) {
-        return ESNIPE_URL + itemId;
-    }
-
-    void openInBrowser(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        //startActivity(Intent.createChooser(intent, getString(R.string.open_esnipe)));
-        startActivity(intent);
     }
 
     void exit() {

@@ -10,7 +10,7 @@
         \n\nThis application is unofficial and is not affiliated with www.esnipe.com</string>
     <string name="esnipe">eSnipe</string>
 
-    <string name="cannot_open">Cannot open the item</string>
+    <string name="cannot_open">Cannot open the eBay item</string>
     <string name="opening_item">Opening item %s</string>
     <string name="open_esnipe">Open eSnipe</string>
 </resources>
