@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Share to eSnipe</string>
-    <string name="app_description">TBD</string>
+    <string name="app_description">Share to eSnipe has no actual control panel; you simply choose \'eSnipe\'
+        off the Share To menu when you are in an Item View page of the eBay mobile
+        app, or an Item page on an eBay website, and it will open a browser tab
+        pointed to eSnipe\'s mobile bid entry page.  If you aren\'t already logged
+        into eSnipe, they will prompt you to, and then forward you to their bid
+        entry page.
+        \n\nThis application is unofficial and is not affiliated with www.esnipe.com</string>
     <string name="esnipe">eSnipe</string>
 
     <string name="cannot_open">Cannot open the item</string>
