@@ -1,5 +1,7 @@
 package com.esnipe.android.share;
 
+import android.net.Uri;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,41 +10,35 @@ import java.util.regex.Pattern;
  */
 public class EbayItemIdMatcher {
 
-    private static class IdTest {
-        Pattern pattern;
-        int group;
-        public IdTest(String pattern, int group) {
-            this.pattern = Pattern.compile(pattern);
-            this.group = group;
-        }
-
-        public String findId(CharSequence text) {
-            Matcher m = this.pattern.matcher(text);
-            if (m.find()) {
-                return m.group(this.group);
-            }
-            return null;
-        }
-    }
-
-    static final IdTest[] TESTS = {
-            new IdTest("[^a-z]itemId=(\\d+)", 1),
-            new IdTest("[^a-z]id=(\\d+)", 1),
-            new IdTest("/(\\d+)$", 1),
-    };
+    /** Pattern for item ID */
+    static final Pattern ID_PATTERN = Pattern.compile("\\d+");
 
     /**
-     *  Extracts the eBay item ID from the text.
+     *  Extracts the eBay item ID from the URL.
      *  Returns null if ID is not found.
      */
-    public static String extractItemId(CharSequence text) {
-        for (IdTest test : TESTS) {
-            String id = test.findId(text);
-            if (id != null) {
-                return id;
-            }
+    public static String findItemId(Uri url) {
+        String itemId = url.getQueryParameter("itemId");
+        if (isItemId(itemId)) {
+            return itemId;
+        }
+        String id = url.getQueryParameter("id");
+        if (isItemId(id)) {
+            return id;
+        }
+        String lastPath = url.getLastPathSegment();
+        if (isItemId(lastPath)) {
+            return lastPath;
         }
         return null;
+    }
+
+    static boolean isItemId(String itemId) {
+        if (itemId == null) {
+            return false;
+        }
+        Matcher m = ID_PATTERN.matcher(itemId);
+        return m.matches();
     }
 
 }

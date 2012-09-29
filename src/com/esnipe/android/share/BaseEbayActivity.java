@@ -26,7 +26,8 @@ abstract class BaseEbayActivity extends Activity {
             return;
         }
 
-        String itemId = EbayItemIdMatcher.extractItemId(text);
+        String itemId = null;
+                //EbayItemIdMatcher.extractItemId(text);    //TODO
         if (itemId == null) {
             exit();
             return;
