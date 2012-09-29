@@ -1,11 +1,21 @@
 package com.esnipe.android.share;
 
 import android.content.Intent;
+import android.net.Uri;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShareActivity extends BaseEbayActivity {
 
     @Override
-    protected CharSequence extractText(Intent intent) {
-        return intent.getCharSequenceExtra(Intent.EXTRA_TEXT);
+    protected List<Uri> extractUrls(Intent intent) {
+        List<Uri> result = new ArrayList<Uri>();
+        CharSequence text = intent.getCharSequenceExtra(Intent.EXTRA_TEXT);
+        if (text != null) {
+            result.addAll(UrlMatcher.findUrls(text));
+        }
+        return result;
     }
+
 }

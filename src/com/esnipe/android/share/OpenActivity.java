@@ -1,11 +1,20 @@
 package com.esnipe.android.share;
 
 import android.content.Intent;
+import android.net.Uri;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OpenActivity extends BaseEbayActivity {
 
     @Override
-    protected CharSequence extractText(Intent intent) {
-        return intent.getDataString();
+    protected List<Uri> extractUrls(Intent intent) {
+        List<Uri> result = new ArrayList<Uri>();
+        Uri data = intent.getData();
+        if (data != null) {
+            result.add(data);
+        }
+        return result;
     }
 }

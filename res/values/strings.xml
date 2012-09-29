@@ -12,5 +12,6 @@
 
     <string name="cannot_open">Cannot open the eBay item</string>
     <string name="opening_item">Opening item %s</string>
+    <string name="opening_url">Opening URL %s</string>
     <string name="open_esnipe">Open eSnipe</string>
 </resources>

@@ -2,9 +2,12 @@ package com.esnipe.android.share;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.util.List;
 
 abstract class BaseEbayActivity extends Activity {
 
@@ -20,27 +23,35 @@ abstract class BaseEbayActivity extends Activity {
 
         logIntent(intent);
 
-        CharSequence text = extractText(intent);
-        if (text == null) {
+        List<Uri> urls = extractUrls(intent);
+        if (urls.isEmpty()) {
             exit();
             return;
         }
 
         String itemId = null;
-                //EbayItemIdMatcher.extractItemId(text);    //TODO
-        if (itemId == null) {
-            exit();
-            return;
+        for (Uri url : urls) {
+            itemId = EbayItemIdMatcher.findItemId(url);
+            if (itemId != null) {
+                Toast.makeText(this,
+                        String.format(getString(R.string.opening_item), itemId), Toast.LENGTH_LONG).show();
+                new EsnipeOpener(this).openInBrowser(itemId);
+                finish();
+                break;
+            }
         }
-        Toast.makeText(this,
-                String.format(getString(R.string.opening_item), itemId), Toast.LENGTH_LONG).show();
 
-        new EsnipeOpener(this).openInBrowser(itemId);
+        if (itemId == null) {
+            Uri url = urls.get(0);
+            Toast.makeText(this,
+                    String.format(getString(R.string.opening_url), url.toString()), Toast.LENGTH_LONG).show();
+            new EsnipeOpener(this).openInBrowser(url);
+            finish();
+        }
 
-        finish();
     }
 
-    protected abstract CharSequence extractText(Intent intent);
+    protected abstract List<Uri> extractUrls(Intent intent);
 
     void logIntent(Intent intent) {
         Log.d(Tag.TAG, "action: " + intent.getAction());
