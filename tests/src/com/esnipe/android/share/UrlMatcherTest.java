@@ -26,4 +26,25 @@ public class UrlMatcherTest extends AndroidTestCase {
                 urls.get(1));
     }
 
+    public void testFindUrls2() {
+        String text = "http://item.mobileweb.ebay.com/viewitem;PdsSession=08f70fc113a0a5aa666209b2fffe604e?itemId=290781498457&index=0&nav=DEALS&nid=75263280032\n";
+        List<Uri> urls = UrlMatcher.findUrls(text);
+        assertEquals(1, urls.size());
+        assertEquals(Uri.parse("http://item.mobileweb.ebay.com/viewitem;PdsSession=08f70fc113a0a5aa666209b2fffe604e?itemId=290781498457&index=0&nav=DEALS&nid=75263280032"), urls.get(0));
+    }
+
+    public void testFindUrls3() {
+        String text = "Try this URL:\n" +
+                "http://www.ebay.com/itm/Karaoke-Country-Duets-Vol-1-CD-/190719985808?forcev4exp=true&forceRpt=true\n";
+        List<Uri> urls = UrlMatcher.findUrls(text);
+        assertEquals(1, urls.size());
+        assertEquals(Uri.parse("http://www.ebay.com/itm/Karaoke-Country-Duets-Vol-1-CD-/190719985808?forcev4exp=true&forceRpt=true"), urls.get(0));
+    }
+
+    public void testFindUrlsNoUrls() {
+        String text = "Hey, there is no URLs here!";
+        List<Uri> urls = UrlMatcher.findUrls(text);
+        assertEquals(0, urls.size());
+    }
+
 }
