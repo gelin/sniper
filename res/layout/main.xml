@@ -8,8 +8,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:textColor="@android:color/secondary_text_dark_nodisable"
             android:autoLink="web"
             android:text="@string/app_description"
             />
+    <Button android:id="@+id/ok_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"/>
 </LinearLayout>
 

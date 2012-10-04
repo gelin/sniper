@@ -9,6 +9,7 @@
         entry page.
         \n\nThis application is unofficial and is not affiliated with www.esnipe.com</string>
     <string name="esnipe">eSnipe</string>
+    <string name="ok">OK</string>
 
     <string name="cannot_open">Cannot open the eBay item</string>
     <string name="opening_item">Opening item %s</string>
