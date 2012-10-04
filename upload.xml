@@ -57,10 +57,11 @@
 	<gcupload 
 	    username="${gc.username}"
 	    password="${gc.password}"
-    	    projectname="esnipe-share-android" 
+    	    projectname="esnipe-share-android"
+    	    filename="bin/esnipe-share-android-release.apk"
     	    targetfilename="esnipe-share-android-${manifest(android:versionName)}-${manifest(android:versionCode)}.apk"
     	    summary="eSnipe Share App (${manifest(android:versionName)})"
-    	    labels="Type-Package, OpSys-Android_1.5" />
+    	    labels="Type-Package, OpSys-Android_1.5, Featured" />
 
 	<copy file="bin/esnipe-share-android.apk"
 	    todir="/home/gelin/Dropbox/android@gelin"/>
