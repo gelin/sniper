@@ -5,3 +5,4 @@ out/*
 bin/*
 upload.credentials.properties
 local.properties
+tmp/*
