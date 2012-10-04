@@ -6,3 +6,4 @@ bin/*
 upload.credentials.properties
 local.properties
 tmp/*
+ant.properties
