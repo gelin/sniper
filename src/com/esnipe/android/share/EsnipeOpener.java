@@ -9,7 +9,7 @@ import android.net.Uri;
  */
 public class EsnipeOpener {
 
-    static final Uri ESNIPE_URL = Uri.parse("http://esnipe.com/snipe-it");
+    static final Uri ESNIPE_URL = Uri.parse("http://esnipe.com/mobile");
     static final String ESNIPE_URL_PARAM = "url";
     static final String EBAY_ITEM_URL = "http://www.ebay.com/itm/";
 
