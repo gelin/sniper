@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.esnipe.android.share"
-          android:versionCode="5"
-          android:versionName="0.1.1">
+          package="com.esnipe.android.share">
+
+    <supports-screens/>
+
     <application android:label="@string/app_name"
                  android:icon="@drawable/icon">
 
@@ -52,6 +53,4 @@
 
     </application>
 
-    <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="21"/>
-    <supports-screens/>
-</manifest> 
+</manifest>
