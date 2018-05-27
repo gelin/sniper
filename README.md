@@ -5,7 +5,7 @@ This application is unofficial and is not affiliated with http://www.ebay.com or
 Screenshots
 -----------
 
-![Main screen](misc/screenshots/device-2015-03-20-082910.png)
-![Share menu](misc/screenshots/device-2015-03-20-083902.png)
-![Share list](misc/screenshots/device-2015-03-20-083932.png)
-![eBay screen](misc/screenshots/device-2015-03-20-083956.png)
+![Main screen](misc/screenshots/device-2018-05-27-200342.png)
+![Share menu](misc/screenshots/device-2018-05-27-200636.png)
+![Share list](misc/screenshots/device-2018-05-27-200624.png)
+![eSnipe screen](misc/screenshots/device-2018-05-27-200652.png)
