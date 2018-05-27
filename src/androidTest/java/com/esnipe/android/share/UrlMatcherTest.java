@@ -1,12 +1,21 @@
 package com.esnipe.android.share;
 
 import android.net.Uri;
-import android.test.AndroidTestCase;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.List;
 
-public class UrlMatcherTest extends AndroidTestCase {
+import static org.junit.Assert.assertEquals;
 
+
+@RunWith(AndroidJUnit4.class)
+@SmallTest
+public class UrlMatcherTest {
+
+    @Test
     public void testFindUrls() {
         String text = "Check out this item I found on eBay:\n" +
                 "\n" +
@@ -26,6 +35,7 @@ public class UrlMatcherTest extends AndroidTestCase {
                 urls.get(1));
     }
 
+    @Test
     public void testFindUrls2() {
         String text = "http://item.mobileweb.ebay.com/viewitem;PdsSession=08f70fc113a0a5aa666209b2fffe604e?itemId=290781498457&index=0&nav=DEALS&nid=75263280032\n";
         List<Uri> urls = UrlMatcher.findUrls(text);
@@ -33,6 +43,7 @@ public class UrlMatcherTest extends AndroidTestCase {
         assertEquals(Uri.parse("http://item.mobileweb.ebay.com/viewitem;PdsSession=08f70fc113a0a5aa666209b2fffe604e?itemId=290781498457&index=0&nav=DEALS&nid=75263280032"), urls.get(0));
     }
 
+    @Test
     public void testFindUrls3() {
         String text = "Try this URL:\n" +
                 "http://www.ebay.com/itm/Karaoke-Country-Duets-Vol-1-CD-/190719985808?forcev4exp=true&forceRpt=true\n";
@@ -41,6 +52,7 @@ public class UrlMatcherTest extends AndroidTestCase {
         assertEquals(Uri.parse("http://www.ebay.com/itm/Karaoke-Country-Duets-Vol-1-CD-/190719985808?forcev4exp=true&forceRpt=true"), urls.get(0));
     }
 
+    @Test
     public void testFindUrlsNoUrls() {
         String text = "Hey, there is no URLs here!";
         List<Uri> urls = UrlMatcher.findUrls(text);
