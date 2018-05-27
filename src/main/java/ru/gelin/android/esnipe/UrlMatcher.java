@@ -1,4 +1,4 @@
-package com.esnipe.android.share;
+package ru.gelin.android.esnipe;
 
 import android.net.Uri;
 
