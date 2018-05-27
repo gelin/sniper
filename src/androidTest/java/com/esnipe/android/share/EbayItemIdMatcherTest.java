@@ -56,4 +56,11 @@ public class EbayItemIdMatcherTest {
         assertNull(id);
     }
 
+    @Test
+    public void testFindItemId5() {
+        Uri uri = Uri.parse("https://m.ebay.com/itm/Karaoke-Country-Duets-Vol-1-CD-/190719985808?forcev4exp=true&forceRpt=true");
+        String id = EbayItemIdMatcher.findItemId(uri);
+        assertEquals("190719985808", id);
+    }
+
 }

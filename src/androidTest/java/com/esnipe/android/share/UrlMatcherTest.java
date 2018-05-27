@@ -59,4 +59,13 @@ public class UrlMatcherTest {
         assertEquals(0, urls.size());
     }
 
+    @Test
+    public void testFindUrls4() {
+        String text = "Try this URL:\n" +
+                "https://m.ebay.com/itm/Karaoke-Country-Duets-Vol-1-CD-/190719985808?forcev4exp=true&forceRpt=true\n";
+        List<Uri> urls = UrlMatcher.findUrls(text);
+        assertEquals(1, urls.size());
+        assertEquals(Uri.parse("https://m.ebay.com/itm/Karaoke-Country-Duets-Vol-1-CD-/190719985808?forcev4exp=true&forceRpt=true"), urls.get(0));
+    }
+
 }

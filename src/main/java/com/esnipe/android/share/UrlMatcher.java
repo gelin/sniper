@@ -16,7 +16,7 @@ public class UrlMatcher {
      *  Regexp to find URLs from here: http://www.codinghorror.com/blog/2008/10/the-problem-with-urls.html
      */
     static final Pattern URL_PATTERN = Pattern.compile(
-            "\\(?\\bhttp://[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*[-A-Za-z0-9+&@#/%=~_()|]");
+            "\\(?\\bhttps?://[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*[-A-Za-z0-9+&@#/%=~_()|]");
 
     /**
      *  Tries to find the URLs in the text.

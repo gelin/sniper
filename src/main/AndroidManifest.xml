@@ -33,21 +33,31 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="http" android:host="ebay.com" android:pathPrefix="/itm"/>
+                <data android:scheme="https" android:host="ebay.com" android:pathPrefix="/itm"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="http" android:host="www.ebay.com" android:pathPrefix="/itm"/>
+                <data android:scheme="https" android:host="www.ebay.com" android:pathPrefix="/itm"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="http" android:host="pages.ebay.com" android:pathPrefix="/link"/>
+                <data android:scheme="https" android:host="pages.ebay.com" android:pathPrefix="/link"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="http" android:host="item.mobileweb.ebay.com"/>
+                <data android:scheme="https" android:host="item.mobileweb.ebay.com"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="http" android:host="m.ebay.com" android:pathPrefix="/itm"/>
+                <data android:scheme="https" android:host="m.ebay.com" android:pathPrefix="/itm"/>
             </intent-filter>
         </activity>
 
